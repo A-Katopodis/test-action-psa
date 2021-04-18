@@ -1,1 +1,13 @@
-
+name: 'Run PSScriptAnalyzer'
+author: 'ankatopo'
+description: 'Run PSScriptAnalyzer'
+inputs:
+  path:
+    description: 'Specifies the path to the scripts or module to be analyzed. Wildcard characters are supported.'
+    required: true
+    default: '.\'
+runs:
+  using: "composite"
+  steps:
+    - run: Invoke-ScriptAnalyzer -Path ${{ inputs.path }}
+      shell: pwsh
